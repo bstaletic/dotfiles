@@ -1,0 +1,95 @@
+source "gpg2 -dq $HOME/.my-pwds.gpg |"
+#imap
+set imap_user="boris.staletic@gmail.com"
+set imap_pass=$my_pw
+set folder="imaps://imap.gmail.com/"
+set spoolfile=+INBOX
+mailboxes = +INBOX
+set header_cache= ~/.cache/mutt
+set message_cachedir= ~/.cache/mutt
+set postponed=+Drafts
+unset imap_passive
+set imap_keepalive=300
+set mail_check=120
+
+#smtp
+unset record
+set my_pass=${imap_pass}
+set my_user="boris.staletic@gmail.com"
+set smtp_url="smtp://boris.staletic@smtp.gmail.com:587/"
+
+#vi bindings
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+#html
+auto_view text/html
+alternative_order text/plain text/html
+macro attach 'V' "<pipe-entry>cat >~/.cache/mutt/mail.html && iceweasel ~/.cache/mutt/mail.html && rm ~/.cache/mutt/mail.html<enter>"
+
+
+#editor: vim
+#au BufRead /tmp/mutt-* set tw=72
+set tmpdir="~/.tmp"
+# -*-muttrc-*-
+
+# Palette for use with the Linux console.  Black background.
+
+color hdrdefault blue black
+color quoted blue black
+color signature blue black
+color attachment red black
+color prompt brightmagenta black
+color message brightred black
+color error brightred black
+color indicator black red
+color status brightgreen blue
+color tree white black
+color normal white black
+color markers red black
+color search white black
+color tilde brightmagenta black
+color index blue black ~F
+color index red black "~N|~O"
+
+# color body brightwhite black '\*+[^*]+\*+'
+# color body brightwhite black '_+[^_]+_+'
+
+
+#Index format
+set date_format="%y-%m-%d %T"
+set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+
+#recipient name in sent folder
+set my_index_format_pre='set index_format="%2C | %Z [%d] %-30.30'
+set my_index_format_post=' (%-4.4c) %?M?<%M> ?%s"'
+
+folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
+folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
+
+# variable width
+## From field gets 30% of remaining space, Subject gets 70%.
+## Remaining space is the total width minus the other fields (35), minus the sidebar (24)
+set my_index_format_pre='set my_col_from = `echo $((30 * ($(tput cols)-35-24) / 100))`; set my_col_subject = `echo $((70 * ($(tput cols)-35-24) / 100))`; set index_format="%2C | %Z [%d] %-$my_col_from.${my_col_from}'
+set my_index_format_post=' (%-4.4c) %?M?<%M> ?%-$my_col_subject.${my_col_subject}s"'
+
+folder-hook .*[sS]ent.* "$my_index_format_pre"t"$my_index_format_post"
+folder-hook ! .*[sS]ent.* "$my_index_format_pre"F"$my_index_format_post"
+
+#Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
+
+#gpg
+set crypt_use_gpgme=yes
+
+#misc
+set sleep_time=0
+

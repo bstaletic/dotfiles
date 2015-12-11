@@ -1,0 +1,18 @@
+! Disable scrolling with output
+xterm*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+xterm*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+xterm*scrollTtyKeypress: true
+! Pager scrolling
+xterm.secondaryScreen: 1
+xterm.secondaryScroll: 0
+! Colors
+xterm*background: black
+xterm*foreground: white
+xterm.colorUL: #4682B4
+! Fonts
+xterm*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*boltfont:  -*-terminus-bold-r-*-*-14-*-*-*-*-*-*-*
+! Scrollback buffer
+xterm*saveLines: 300

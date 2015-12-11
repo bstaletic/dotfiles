@@ -1,0 +1,15 @@
+0%n - %t
+%n-%a-%t-eos
+%n %t %a
+%n-%t
+%n - %t
+%n-%a-%t
+%n %t
+%n %t - %a
+%a - %n.%t
+%a - %n %t
+%u - %n.%t
+%n %n. %a - %t
+%n.%t
+%n. %t
+%n. %a - %t

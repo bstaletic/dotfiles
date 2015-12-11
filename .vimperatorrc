@@ -1,0 +1,17 @@
+"3.10.1 (created: 2015/08/25 00:41:59)
+
+highlight CmdLine background: black; color: white; transition: all 0.25s;
+highlight CompDesc width: 500px; max-width: 500px; color: #CCCCCC;
+highlight CompItem[selected] background: #FF0000; box-shadow: 0px 0px 1px #CC0;
+highlight ErrorMsg color: red; background: black; font-weight: bold;
+highlight Filter border-radius: 2px; background: #00BB00; border: 0px solid orange;
+highlight InfoMsg color: magenta; background: black;
+highlight LineNr color: orange; background: black;
+highlight MoreMsg color: green; background: black;
+highlight Normal color: white; background: black;
+highlight Title color: magenta; background: black; font-weight: bold;
+highlight WarningMsg color: red; background: black;
+set tabnumbers
+source! /home/bstaletic/.vimperatorrc.local
+
+" vim: set ft=vimperator:

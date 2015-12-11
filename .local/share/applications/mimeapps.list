@@ -1,0 +1,17 @@
+
+[Default Applications]
+application/pdf=xpdf.desktop
+x-scheme-handler/http=dwb.desktop
+x-scheme-handler/https=dwb.desktop
+text/html=dwb.desktop
+image/png=feh.desktop
+video=mplayer.desktop
+video/3gp=mplayer.desktop
+video/mp4=mplayer.desktop
+video/mkv=mplayer.desktop
+video/avi=mplayer.desktop
+video/wmv=mplayer.desktop
+video/vob=mplayer.desktop
+application/zip=vim.desktop
+application/rar=vim.desktop
+text/plain=vim.desktop

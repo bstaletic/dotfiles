@@ -1,0 +1,19 @@
+# Write your default config options here!
+
+pausing=2
+subcp=cp1250
+sub-fuzziness=2
+ao=alsa
+nomouseinput=1
+nolirc=1
+nojoystick=1
+
+[x11]
+profile-desc="X.org config"
+vo=gl_nosw
+ao=alsa
+[fb]
+profile-desc="VT config"
+vo=fbdev2
+vf=scale=1280:800
+zoom=1

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application                          # Indicates the type as listed above
+Version=1.0                               # The version of the desktop entry specification to which this file complies
+Name=vim                            # The name of the application
+Comment=text editor    # A comment which can/will be used as a tooltip
+Exec=vim %f                           # The executable of the application.
+Terminal=true                            # Describes whether this application needs to be run in a terminal or not

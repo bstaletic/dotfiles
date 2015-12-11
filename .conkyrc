@@ -1,0 +1,9 @@
+background 0
+out_to_x 0
+out_to_console 1
+update_interval 1
+total_run_times 0
+use_spacer none
+
+TEXT
+${if_existing /sys/class/net/enp0s10/operstate up} D: ${downspeed enp0s10} U: ${upspeed enp0s10} ${endif} ${if_existing /sys/class/net/wlp5s0/operstate up} D: ${downspeed wlp5s0} U: ${upspeed wlp5s0} Str: ${wireless_link_qual wlp5s0} ${endif} | ${battery BAT1} | CPU: ${cpu cpu0}% | ${acpitemp}C | $mem |  Vol: ${exec amixer get Master -M | grep -oE -m1 "[[:digit:]]*%" } | ${time %R}
