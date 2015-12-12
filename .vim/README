@@ -1,0 +1,12 @@
+Currently I have a few vim plugins installed as system packages, so this dir may look a bit empty. I'm going to replace all packages with manually installed plugins, so everything would be visible.
+
+Current situation:
+	plugins installed using package manager:
+		clang-complete
+		fugitive
+		supertab
+		syntastic
+		ultisnips
+	manually installed plugins:
+		easymotion
+		signature
