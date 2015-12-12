@@ -15,10 +15,12 @@ set ruler
 set suffixes=.bak,~,.swp,.o,.info,.obj
 
 " Status
+
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Split windows
+
 set splitright
 set splitbelow
 nnoremap <C-J> <C-W><C-J>
@@ -32,24 +34,3 @@ let g:EasyMotion_leader_key='<Leader>'
 "let g:clang_complete_auto = 0
 " Show clang errors in the quickfix window
 "let g:clang_complete_copen = 1
-
-
-" Completion
-set tags+=${HOME}/.vim/all.tags
-map <C-F6> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
- function! SuperCleverTab()
-    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        if &omnifunc != ''
-            return "\<C-X>\<C-O>"
-        elseif &dictionary != ''
-            return "\<C-K>"
-        else
-            return "\<C-N>"
-        endif
-    endif
-endfunction
-
-inoremap <M-Tab> <C-R>=SuperCleverTab()<cr>
