@@ -9,3 +9,5 @@ nmap H <C-o>
 nmap L <C-i>
 nmap d <C-q>
 set hint-timeout=0
+set mediasource=true
+set media-stream=true
