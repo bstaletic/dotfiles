@@ -4,12 +4,11 @@ call vundle#begin()
 
 " These are required for Vundle, filetype will later be set to on
 set nocompatible
-filetype off 
+filetype off
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins I like, all hosted on github
 Plugin 'tpope/vim-fugitive'
-Plugin 'ervandew/supertab'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/syntastic'
@@ -18,6 +17,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'spf13/vim-autoclose'
 Plugin 'clvv/a.vim'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 
@@ -34,8 +34,16 @@ filetype plugin indent on
 set hlsearch
 set ignorecase
 set smartcase
-set ruler"
+set ruler
 set suffixes=.bak,~,.swp,.o,.info,.obj
+
+"Supertab
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-n>"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrexedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = [ "&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 " Status
 

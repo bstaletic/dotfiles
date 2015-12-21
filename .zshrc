@@ -78,6 +78,8 @@ alias -g ...="../.."
 alias pacupg="sudo pacmatic -Syu && pacaur -Sua"
 alias pacre="sudo pacman -Rsn"
 alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | tr '\n' ' ')"
+# Workaround for a bug somewhere in vim+clang_complete+clang combination
+alias -g vim="vim 2>/dev/null"
 # Vi mode indicator
 function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
