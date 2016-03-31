@@ -1,5 +1,5 @@
 " Plug
-call plug#begin('~/.vim/bundle')
+call plug#begin()
 
 " Plugins I like, all hosted on github
 Plug 'Valloric/YouCompleteMe'
@@ -61,5 +61,5 @@ let g:EasyMotion_leader_key='<Leader>'
 " NERDTree
 nmap <F6> :NERDTreeToggle<CR>
 
-" Python indentation workaround
-au FileType pyton setl ts=4 expandtab
+" Python indentation
+au FileType python setl ts=4 expandtab
