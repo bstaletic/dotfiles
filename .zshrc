@@ -20,7 +20,7 @@ zstyle ':completion:*:history-words'   list false
 zstyle ':completion:*:history-words'   remove-all-dups yes
 zstyle ':completion:*:history-words'   stop yes
 # match uppercase from lowercase
-zstyle ':completion:*'                 matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*'                 matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
 # separate matches into groups
 zstyle ':completion:*:matches'         group 'yes'
 zstyle ':completion:*'                 group-name ''
@@ -44,7 +44,17 @@ compinit
 # Syntax
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
-#source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
+#if [[ $NAME == Arch ]]; then
+#	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#	source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+#	source /usr/share/doc/pkgfile/command-not-found.zsh
+#fi
+#if [[  $NAME == 'Gentoo' ]]; then
+#	source /usr/share/zsh/site-contrib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#	source ~/.zshenv
+#	source /usr/share/zsh/site-contrib/zsh-history-substring-search/zsh-history-substring-search.zsh
+#fi
 ### zsh options
 # history
 setopt hist_ignore_all_dups
@@ -67,11 +77,13 @@ alias -g cp="cp -i"
 alias -g ...="../.."
 alias portupg="sudo emerge -avuDN --with-bdeps y @world"
 alias portro="sudo emerge -c"
+# Workaround for a bug somewhere in vim+clang_complete+clang combination
+alias -g vim="vim 2>/dev/null"
 # Vi mode indicator
 function zle-line-init zle-keymap-select {
-	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-	RPS2=$RPS1
-	zle reset-prompt
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -82,14 +94,12 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # VSC status
 autoload -Uz vcs_info
-precmd() {  
-	vcs_info
-	print -Pn "\e]0;%m:%~\a"
-}
+precmd() {  vcs_info
+			print -Pn "\e]0;%m:%~\a"}
 setopt prompt_subst
 PS1='%B%F{blue}%n%f%b@%m %B%40<..<%1~ %<<${vcs_info_msg_0_}%b%# '
 # Common keys
-# Codes gotten using zsh's zkbd
+# Codes gotten uing zsh's zkbd
 bindkey '^[[4h' overwrite-mode # Ins
 bindkey '^[[1~' beginning-of-line # Home
 bindkey '^[[5~' up-line-or-history # PgUp
@@ -100,4 +110,5 @@ bindkey '^[[6~' down-line-or-history # PgDown
 preexec () { print -Pn "\e]0;$1\a" }
 
 # TMUX
-[[ -z $TMUX && $(tty) != "/dev/tty1" ]] && (tmux attach || tmux new-session)
+[[ -z $TMUX && -z $DISPLAY && $(tty)="/dev/pts*" ]] && (tmux attach-session -t fb || tmux new-session -s fb)
+[[ -z $TMUX && -n $DISPLAY && $(tty)="/dev/pts*" ]] && (tmux attach-session -t x11 || tmux new-session -s x11)
