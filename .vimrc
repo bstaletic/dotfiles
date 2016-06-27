@@ -21,7 +21,7 @@ call plug#end()
 " Misc
 
 syntax on
-colorscheme peachpuff
+colorscheme slate
 nmap <F1> :set invnumber<CR>
 nmap <F2> :set invrelativenumber<CR>
 set pastetoggle=<F3>
