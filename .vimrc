@@ -6,7 +6,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-Plug 'vim-scripts/SearchComplete'
+"Plug 'vim-scripts/SearchComplete'
 "Plug 'scrooloose/syntastic'
 "Plug 'Rip-Rip/clang_complete'
 Plug 'kshenoy/vim-signature'
@@ -33,6 +33,15 @@ set ignorecase
 set smartcase
 set ruler
 set suffixes=.bak,~,.swp,.o,.info,.obj
+let mapleader=" "
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+"nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+"nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " Status
 
 set laststatus=2
