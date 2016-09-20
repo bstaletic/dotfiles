@@ -1,0 +1,6 @@
+[submodule "vim-config"]
+	path = .vim
+	url = https://github.com/bstaletic/vim-config
+[submodule ".vim"]
+	path = .vim
+	url = https://github.com/bstaletic/vim-config
