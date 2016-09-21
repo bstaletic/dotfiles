@@ -1,7 +1,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=500
 SAVEHIST=500
-setopt appendhistory autocd extendedglob 
+setopt appendhistory autocd extendedglob
 bindkey -v
 # Disable .4 sec lag when switching modes
 export KEYTIMEOUT=1
@@ -65,8 +65,6 @@ alias -g mv="mv -i"
 alias -g rm="rm -I"
 alias -g cp="cp -i"
 alias -g ...="../.."
-alias portupg="sudo emerge -avuDN --with-bdeps y @world"
-alias portro="sudo emerge -c"
 #alias s2ram="echo mem | sudo tee /sys/power/state"
 #alias s2disk="echo /dev/sda9 | sudo tee /sys/power/resume; echo disk | sudo tee /sys/power/state"
 # Vi mode indicator
@@ -84,7 +82,7 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # VSC status
 autoload -Uz vcs_info
-precmd() {  
+precmd() {
 	vcs_info
 	print -Pn "\e]0;%m:%~\a"
 }
