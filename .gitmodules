@@ -1,12 +1,12 @@
-[submodule "vim-config"]
-	path = .vim
-	url = https://github.com/bstaletic/vim-config
 [submodule ".vim"]
 	path = .vim
 	url = https://github.com/bstaletic/vim-config
+	branch = master
 [submodule "zsh-syntax-highlighting"]
 	path = zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+	branch = master
 [submodule "zsh-history-substring-search"]
 	path = zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
+	branch = master
