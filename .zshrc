@@ -20,7 +20,7 @@ zstyle ':completion:*:history-words'   list false
 zstyle ':completion:*:history-words'   remove-all-dups yes
 zstyle ':completion:*:history-words'   stop yes
 # match uppercase from lowercase
-zstyle ':completion:*'                 matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*'                 matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=**'
 # separate matches into groups
 zstyle ':completion:*:matches'         group 'yes'
 zstyle ':completion:*'                 group-name ''
