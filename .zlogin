@@ -1,1 +1,1 @@
-[[ -z ${TMUX} ]] && tmux new-session
+#[[ -z ${TMUX} ]] && tmux new-session

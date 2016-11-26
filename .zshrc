@@ -100,4 +100,4 @@ bindkey '^[[6~' down-line-or-history # PgDown
 preexec () { print -Pn "\e]0;$1\a" }
 
 # TMUX
-[[ -z $TMUX && $(tty) != "/dev/tty1" ]] && (tmux attach || tmux new-session)
+[[ -z $SSH_CONNECTION && -z $TMUX && $(tty) != "/dev/tty1" ]] && (tmux attach || tmux new-session)

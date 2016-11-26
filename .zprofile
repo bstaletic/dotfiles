@@ -1,1 +1,1 @@
-[[ -z $DISPLAY && $(tty) = "/dev/tty6" ]] && startx -- vt7
+[[ -z $DISPLAY && $(tty) = "/dev/tty1" ]] && startx -- vt7
