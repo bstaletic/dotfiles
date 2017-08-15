@@ -5,6 +5,7 @@ setopt appendhistory autocd extendedglob
 bindkey -v
 # Disable .4 sec lag when switching modes
 export KEYTIMEOUT=1
+export PATH="/home/bstaletic/bin:${PATH}"
 # The following lines were added by compinstall
 ## Completions
 # do not complete backup executables
