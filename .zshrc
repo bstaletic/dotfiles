@@ -91,12 +91,13 @@ setopt prompt_subst
 PS1='%B%F{blue}%n%f%b@%m %B%40<..<%1~ %<<${vcs_info_msg_0_}%b%# '
 # Common keys
 # Codes gotten using zsh's zkbd
-bindkey '^[[4h' overwrite-mode # Ins
-bindkey '^[[1~' beginning-of-line # Home
-bindkey '^[[5~' up-line-or-history # PgUp
-bindkey '^[[P' delete-char # Del
-bindkey '^[[4~' end-of-line # End
-bindkey '^[[6~' down-line-or-history # PgDown
+source ~/.zkbd/${TERM}-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n ${key[Home]} ]] && bindkey "${key[Home]}"  beginning-of-line
+[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}"  up-line-or-history
+[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}"  delete-char
+[[ -n ${key[End]} ]] && bindkey "${key[End]}"  end-of-line
+[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}"  down-line-or-history
 # Window naming
 preexec () { print -Pn "\e]0;$1\a" }
 
