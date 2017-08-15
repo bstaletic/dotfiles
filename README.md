@@ -1,10 +1,10 @@
 # dotfiles
 I currently use the following software:
-- GUI browser - surf
-- CLI browser - elinks
+- GUI browser - qutebrowser
+- CLI browser - links
 - Shell - zsh
 - Music player - mpd + ncmpcpp (mpc for dwm bindings)
-- Video player - mplayer (framebuffer) + mpv (xorg)
+- Video player - mpv
 - Terminal multiplexer - tmux
 - Text editor - vim
 - File manager - vifm
