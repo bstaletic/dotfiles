@@ -45,7 +45,6 @@ compinit
 # Syntax
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
-#source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
 ### zsh options
 # history
 setopt hist_ignore_all_dups
@@ -60,14 +59,11 @@ alias -g mkdir="mkdir -v -p"
 alias -g ls="ls --color=always --group-directories-first -N"
 alias la="ls -A"
 alias ll="ls -lA"
-#alias reboot="sudo reboot"
-#alias poweroff="sudo poweroff"
 alias -g mv="mv -i"
 alias -g rm="rm -I"
 alias -g cp="cp -i"
 alias -g ...="../.."
-#alias s2ram="echo mem | sudo tee /sys/power/state"
-#alias s2disk="echo /dev/sda9 | sudo tee /sys/power/resume; echo disk | sudo tee /sys/power/state"
+alias -g ....="../../.."
 # Vi mode indicator
 function zle-line-init zle-keymap-select {
 	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
@@ -81,6 +77,10 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+# Load zsh's mv and args
+autoload -Uz zargs
+autoload -Uz zmv
+alias -g mmv="noglob zmv -W"
 # VSC status
 autoload -Uz vcs_info
 precmd() {
