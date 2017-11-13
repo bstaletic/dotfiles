@@ -5,7 +5,7 @@ setopt appendhistory autocd extendedglob
 bindkey -v
 # Disable .4 sec lag when switching modes
 export KEYTIMEOUT=1
-export PATH="/home/bstaletic/bin:${PATH}"
+export PATH="/home/bstaletic/bin:/home/bstaletic/.cargo/bin:${PATH}"
 # The following lines were added by compinstall
 ## Completions
 # do not complete backup executables
@@ -45,6 +45,7 @@ compinit
 # Syntax
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
+#source ~/zsh-autosuggestions/zsh-autosuggestions.zsh
 ### zsh options
 # history
 setopt hist_ignore_all_dups
@@ -56,7 +57,7 @@ setopt extended_history
 setopt correct
 ### Aliases
 alias -g mkdir="mkdir -v -p"
-alias -g ls="ls --color=always --group-directories-first -N"
+alias ls="ls --color=auto --group-directories-first -N"
 alias la="ls -A"
 alias ll="ls -lA"
 alias -g mv="mv -i"
@@ -64,14 +65,10 @@ alias -g rm="rm -I"
 alias -g cp="cp -i"
 alias -g ...="../.."
 alias -g ....="../../.."
-# Vi mode indicator
-function zle-line-init zle-keymap-select {
-	RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-	RPS2=$RPS1
-	zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+#alias s2ram="echo mem | sudo tee /sys/power/state"
+#alias s2disk="echo /dev/sda9 | sudo tee /sys/power/resume; echo disk | sudo tee /sys/power/state"
+# Disable the annoying beeps
+setopt no_beep
 # Substring search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -98,8 +95,12 @@ source ~/.zkbd/${TERM}-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}"  delete-char
 [[ -n ${key[End]} ]] && bindkey "${key[End]}"  end-of-line
 [[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}"  down-line-or-history
+# emacs-like bindings
+bindkey  beginning-of-line
 # Window naming
 preexec () { print -Pn "\e]0;$1\a" }
 
 # TMUX
-[[ -z $SSH_CONNECTION && -z $TMUX && $(tty) != "/dev/tty1" ]] && (tmux attach || tmux new-session)
+[[ -z $SSH_CONNECTION && -z $TMUX && $(tty) != "/dev/tty1" ]] && \
+	(tmux attach || tmux new-session)
+
