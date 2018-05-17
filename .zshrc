@@ -5,7 +5,7 @@ setopt appendhistory autocd extendedglob
 bindkey -v
 # Disable .4 sec lag when switching modes
 export KEYTIMEOUT=1
-export PATH="/home/bstaletic/bin:/home/bstaletic/.cargo/bin:${PATH}"
+export PATH="/home/bstaletic/.cargo/bin:${PATH}"
 # The following lines were added by compinstall
 ## Completions
 # do not complete backup executables
@@ -70,8 +70,6 @@ alias -g ....="../../.."
 # Disable the annoying beeps
 setopt no_beep
 # Substring search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 # Load zsh's mv and args
@@ -95,6 +93,8 @@ source ~/.zkbd/${TERM}-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 [[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}"  delete-char
 [[ -n ${key[End]} ]] && bindkey "${key[End]}"  end-of-line
 [[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}"  down-line-or-history
+[[ -n ${key[Up]}  ]] && bindkey "${key[Up]}" history-substring-search-up
+[[ -n ${key[Down]}  ]] && bindkey "${key[Down]}" history-substring-search-down
 # emacs-like bindings
 bindkey  beginning-of-line
 # Window naming
@@ -103,4 +103,3 @@ preexec () { print -Pn "\e]0;$1\a" }
 # TMUX
 [[ -z $SSH_CONNECTION && -z $TMUX && $(tty) != "/dev/tty1" ]] && \
 	(tmux attach || tmux new-session)
-
